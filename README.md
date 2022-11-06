@@ -1,7 +1,6 @@
 # Workshop
 
-This is the home page for the workshop to be held Wed 9th November
-10:00-12:00
+This is the home page for the workshop to be held Wed 9th November 2-4pm.
 
 We will meet on Teams.  Further details TBC.  (Spoiler alert: Julia
 code to follow here.)
