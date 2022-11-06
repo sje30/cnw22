@@ -3,7 +3,10 @@
 This is the home page for the workshop to be held Wed 9th November 2-4pm.
 
 We will meet on Teams.  Further details TBC.  (Spoiler alert: Julia
-code to follow here.)
+code to follow here.  If you are able to install
+[Julia](https://julialang.org/downloads/) then you should be able to
+follow along, although not necessary.
+
 
 ## Recording
 
