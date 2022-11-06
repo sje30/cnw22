@@ -14,23 +14,56 @@ macro bind(def, element)
     end
 end
 
-# ╔═╡ de0093ba-5ddb-11ed-1402-33c20e762315
-using Plots
+# ╔═╡ 6c5b1231-bcce-48e4-84c9-da5168383aa2
+begin
+    using PlutoUI
+    using Plots
+    gr()
+    PlutoUI.TableOfContents()
+end
 
-# ╔═╡ 4a1857d2-7ad1-48ae-bfb3-995af3105eee
-gr()
+# ╔═╡ bd5cece5-8fae-4b1a-8804-f1fa6898e19d
+md"""
+# Computational Neuroscience Workshop 
 
-# ╔═╡ c89aaba2-a730-4aeb-bdb9-5fc9a6caf6c8
+# Introduction
 
+* "All models are wrong but some are useful"  (Box, 1976?)
+* Introduction to modelling in computational neuroscience
+
+# Background maths
+
+
+## Euler integration
+
+Given some differential equation for how x changes over time and so
+initial condition (i.e. x = some value at time t = 0), we can
+integrate them numerically using Euler integration.
+
+$\frac{dx}{dt} = f(x,t)$
+
+$X_{n+1} = X_{n}+ h \frac{dx}{dt}$
+
+$X_{n+1} = X_{n}+ h f(X_{n}, nh)$
+
+Depending on the step-size h.
+
+## Trappenberg example (Appendix B)
+
+Solve differential equation
+
+$\frac{dx}{dt} = t -x + 1$
+
+with initial conditions $x(0) = 1$.
+
+Known solution:
+
+$x(t) = \exp(-t) + t$
+
+"""
 
 # ╔═╡ 96036942-347d-45c5-8ee0-d922c233cbaf
-inf_slider = @bind rate_inf html"<input type='range' min='0.01' max='1' step='0.01' value='0.15'>"
-
-# ╔═╡ 5c8d9f85-843c-4031-8516-393b4d817d78
-
-
-# ╔═╡ c954df14-3901-47b7-8541-da05203c2d00
-
+h_slider = @bind h_step html"<input type='range' min='0.01' max='1' step='0.01' value='0.15'>"
 
 # ╔═╡ a1de524e-dafc-42c9-af2e-7c8ae32eb202
 begin
@@ -75,28 +108,72 @@ begin
 	
 end
 
-# ╔═╡ 201240d7-c208-4564-be62-6e73f76a5a43
-plot_euler1(h=rate_inf)
-
-# ╔═╡ 8767092d-39a1-435e-874d-30a304031b09
+# ╔═╡ 37a0943d-3be5-483d-8e00-2a4c5cdc87cd
+plot_euler1(h=h_step)
 
 
-# ╔═╡ a6e127a0-fa0a-4233-9194-50f0d94bb3e4
+# ╔═╡ dca12439-7e50-4fd0-b6a9-cd009e733c00
+md"""
+
+# Hodgkin-Huxley model
 
 
-# ╔═╡ 8dcef4f5-9913-4bc5-94fb-2b3149b3ec07
+## Reminder of the biology
+
+Its all in the channels!
+
+[http://tinyurl.com/matthews-channel](http://tinyurl.com/matthews-channel)
+
+## Reminder of the mathematics
+
+See [hh_maths.pdf](hh_maths.pdf)
 
 
-# ╔═╡ bad35657-c8d7-4186-ad16-3b7978355fbe
+Julia has built-in functions for efficient numerical integration of
+ODEs.  We will use them here so that we focus on the problem and not the
+numerics.
+    
+Run with default I=0.1 and then compare with I=10.
+<!-- #endregion -->
+
+
+include("hhode.jl")
+plot_hh(i=0.1)
+
+
+## Exercises
+
+1. Can you find the critical value of I where you first get a spike
+generated?
+
+2. Can you work out the units on I (check equation 1 and Table 1 of
+   hh_maths.pdf )?
+
+3. Estimate the firing rate (in Hz) for the model as you vary I from 0
+   to 500.  Can you plot a graph of it?  
+   
+   <!-- e.g. see    [hh_plotrate.m](hh_plotrate.m) for a template. -->
+
+4. (Advanced) Apply a pulse of negative current with I=-50
+   for 5 ms followed by I=0 and describe what happens.
+
+5. Try other manipulations, e.g. what if you set dh/dt to
+   zero?  What would this simulate?
+"""
+
+
+
 
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
 Plots = "~1.35.8"
+PlutoUI = "~0.7.48"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
@@ -105,7 +182,13 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.8.2"
 manifest_format = "2.0"
-project_hash = "39d0d5866236472d6bc1a58c4e663ea8a2a2e057"
+project_hash = "007fbb57db0277a809224fb92fc2c3ad5ea07613"
+
+[[deps.AbstractPlutoDingetjes]]
+deps = ["Pkg"]
+git-tree-sha1 = "8eaf9f1b4921132a4cff3f36a1d9ba923b14a481"
+uuid = "6e696c72-6542-2067-7265-42206c756150"
+version = "1.1.4"
 
 [[deps.ArgTools]]
 uuid = "0dad84c5-d112-42e6-8d28-ef12dabb789f"
@@ -326,6 +409,24 @@ git-tree-sha1 = "129acf094d168394e80ee1dc4bc06ec835e510a3"
 uuid = "2e76f6c2-a576-52d4-95c1-20adfe4de566"
 version = "2.8.1+1"
 
+[[deps.Hyperscript]]
+deps = ["Test"]
+git-tree-sha1 = "8d511d5b81240fc8e6802386302675bdf47737b9"
+uuid = "47d2ed2b-36de-50cf-bf87-49c2cf4b8b91"
+version = "0.0.4"
+
+[[deps.HypertextLiteral]]
+deps = ["Tricks"]
+git-tree-sha1 = "c47c5fa4c5308f27ccaac35504858d8914e102f9"
+uuid = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
+version = "0.9.4"
+
+[[deps.IOCapture]]
+deps = ["Logging", "Random"]
+git-tree-sha1 = "f7be53659ab06ddc986428d3a9dcc95f6fa6705a"
+uuid = "b5f81e59-6552-4d32-b1f0-c071b021bf89"
+version = "0.2.2"
+
 [[deps.IniFile]]
 git-tree-sha1 = "f550e6e32074c939295eb5ea6de31849ac2c9625"
 uuid = "83e8ac13-25f8-5344-8a64-a9f2b223428f"
@@ -488,6 +589,11 @@ git-tree-sha1 = "5d4d2d9904227b8bd66386c1138cf4d5ffa826bf"
 uuid = "e6f89c97-d47a-5376-807f-9c37f3926c36"
 version = "0.4.9"
 
+[[deps.MIMEs]]
+git-tree-sha1 = "65f28ad4b594aebe22157d6fac869786a255b7eb"
+uuid = "6c6e2e6c-3030-632d-7369-2d6c69616d65"
+version = "0.1.4"
+
 [[deps.MacroTools]]
 deps = ["Markdown", "Random"]
 git-tree-sha1 = "42324d08725e200c23d4dfb549e0d5d89dede2d2"
@@ -626,6 +732,12 @@ deps = ["Base64", "Contour", "Dates", "Downloads", "FFMPEG", "FixedPointNumbers"
 git-tree-sha1 = "b434dce10c0290ab22cb941a9d72c470f304c71d"
 uuid = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 version = "1.35.8"
+
+[[deps.PlutoUI]]
+deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "FixedPointNumbers", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "MIMEs", "Markdown", "Random", "Reexport", "URIs", "UUIDs"]
+git-tree-sha1 = "efc140104e6d0ae3e7e30d56c98c4a927154d684"
+uuid = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
+version = "0.7.48"
 
 [[deps.Preferences]]
 deps = ["TOML"]
@@ -769,6 +881,11 @@ deps = ["Random", "Test"]
 git-tree-sha1 = "8a75929dcd3c38611db2f8d08546decb514fcadf"
 uuid = "3bb67fe8-82b1-5028-8e26-92a6c54297fa"
 version = "0.9.9"
+
+[[deps.Tricks]]
+git-tree-sha1 = "6bac775f2d42a611cdfcd1fb217ee719630c4175"
+uuid = "410a4b4d-49e4-4fbc-ab6d-cb71b17b3775"
+version = "0.1.6"
 
 [[deps.URIs]]
 git-tree-sha1 = "e59ecc5a41b000fa94423a578d29290c7266fc10"
@@ -1025,17 +1142,12 @@ version = "1.4.1+0"
 """
 
 # ╔═╡ Cell order:
-# ╠═de0093ba-5ddb-11ed-1402-33c20e762315
+# ╠═6c5b1231-bcce-48e4-84c9-da5168383aa2
+# ╟─bd5cece5-8fae-4b1a-8804-f1fa6898e19d
 # ╠═4a1857d2-7ad1-48ae-bfb3-995af3105eee
-# ╠═201240d7-c208-4564-be62-6e73f76a5a43
-# ╠═c89aaba2-a730-4aeb-bdb9-5fc9a6caf6c8
+# ╠═37a0943d-3be5-483d-8e00-2a4c5cdc87cd
+# ╠═dca12439-7e50-4fd0-b6a9-cd009e733c00
 # ╠═96036942-347d-45c5-8ee0-d922c233cbaf
-# ╠═5c8d9f85-843c-4031-8516-393b4d817d78
-# ╠═c954df14-3901-47b7-8541-da05203c2d00
-# ╠═a1de524e-dafc-42c9-af2e-7c8ae32eb202
-# ╠═8767092d-39a1-435e-874d-30a304031b09
-# ╠═a6e127a0-fa0a-4233-9194-50f0d94bb3e4
-# ╠═8dcef4f5-9913-4bc5-94fb-2b3149b3ec07
-# ╠═bad35657-c8d7-4186-ad16-3b7978355fbe
+# ╟─a1de524e-dafc-42c9-af2e-7c8ae32eb202
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
