@@ -68,4 +68,4 @@ unless you upgrade Julia.
 
 ## Static version of notes
 
-A static version of the notes are [available](cnw22.jl.html).
+A static version of the notes are [available](cnw22.html).
