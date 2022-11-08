@@ -2,7 +2,7 @@
 
 This is the home page for the workshop to be held Wed 9th November 2-4pm.
 
-We will meet on Teams in the Deep learning channel.
+We will meet on Teams in the [Deep learning channel](https://teams.microsoft.com/l/channel/19%3aa6dd62a4f91e4a62b02d12287513a8e5%40thread.tacv2/Deep%2520Learning%25202022?groupId=dc32d844-7363-4ffe-9d88-914f976d5318&tenantId=49a50445-bdfa-4b79-ade3-547b4f3986e9).
 
 
 ## Recording
