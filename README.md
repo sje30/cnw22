@@ -63,3 +63,7 @@ dependencies, and to see how long it will take.  I suggest you follow
 along with the video.  There is a long pause from about 6 minutes to
 26 minutes when it is installing and compiling all the extra packages.
 This should happen only once, unless you upgrade Julia.
+
+## Static version of notes
+
+A static version of the notes are [available](cnw22.jl.html).
