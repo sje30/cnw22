@@ -41,10 +41,25 @@ using Downloads
 Downloads.download("https://raw.githubusercontent.com/sje30/cnw22/main/cnw22.jl", "cnw22.jl")
 ```
 
+Make sure the file is called `cnw22.jl` rather than something like
+`cnw22.jl.txt`.
+
 4. Start Pluto notebook:
 
 ```
 Pluto.run()
 ```
 
-and then select the `cnw22.jl` notebook.
+and then select the `cnw22.jl` notebook.  The first time I tried this,
+it took about 20 minutes to load all the packages required, so please
+be patient.
+
+
+## Video
+
+I have made a recording of me installing everything afresh on a
+Windows 11 laptop.  This was to check that I have listed all the
+dependencies, and to see how long it will take.  I suggest you follow
+along with the video.  There is a long pause from about 6 minutes to
+26 minutes when it is installing and compiling all the extra packages.
+This should happen only once, unless you upgrade Julia.
