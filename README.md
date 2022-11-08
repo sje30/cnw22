@@ -2,10 +2,7 @@
 
 This is the home page for the workshop to be held Wed 9th November 2-4pm.
 
-We will meet on Teams.  Further details TBC.  (Spoiler alert: Julia
-code to follow here.  If you are able to install
-[Julia](https://julialang.org/downloads/) then you should be able to
-follow along, although not necessary.
+We will meet on Teams in the Deep learning channel.
 
 
 ## Recording
@@ -18,6 +15,10 @@ edit you out of the recording.
 
 
 # Instructions
+
+
+If you can spend 30 minutes downloading the material before the session, you should
+be able to use the material during the session.
 
 1. Download [Julia](https://julialang.org/downloads/)
 
@@ -57,12 +58,13 @@ be patient.
 
 ## Video
 
-I have made a recording of me installing everything afresh on a
-Windows 11 laptop.  This was to check that I have listed all the
-dependencies, and to see how long it will take.  I suggest you follow
-along with the video.  There is a long pause from about 6 minutes to
-26 minutes when it is installing and compiling all the extra packages.
-This should happen only once, unless you upgrade Julia.
+I have made a [youtube video](https://youtu.be/4vEhW1Piafs) of me
+installing everything afresh on a Windows 11 laptop.  This was to
+check that I have listed all the dependencies, and to see how long it
+will take.  I suggest you follow along with the video.  There is a
+long pause from about 6 minutes to 26 minutes when it is installing
+and compiling all the extra packages.  This should happen only once,
+unless you upgrade Julia.
 
 ## Static version of notes
 
