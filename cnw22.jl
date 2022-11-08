@@ -894,7 +894,7 @@ and guess which is the real data.
 
 ## The basic model
 
-![http://www.izhikevich.org/publications/izhik.gif](izhik.gif)
+![the basic model](http://www.izhikevich.org/publications/izhik.gif)
 
 
 ## Exercise: Izhikevich
