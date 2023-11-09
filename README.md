@@ -1,17 +1,11 @@
 # Workshop
 
-This is the home page for the workshop to be held Wed 9th November 2-4pm.
-
-We will meet on Teams in the [Deep learning channel](https://teams.microsoft.com/l/channel/19%3aa6dd62a4f91e4a62b02d12287513a8e5%40thread.tacv2/Deep%2520Learning%25202022?groupId=dc32d844-7363-4ffe-9d88-914f976d5318&tenantId=49a50445-bdfa-4b79-ade3-547b4f3986e9).
+This is the home page for the workshop to be held Friday November 10th 2023.
 
 
 ## Recording
 
-The session will be recorded, and we assume that if you have your
-camera or microphone on, then you consent to being recorded.  If you
-wish to revoke your consent, please contact us and we will need to
-edit you out of the recording.
-
+No recording this year.
 
 
 # Instructions
