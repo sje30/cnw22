@@ -713,18 +713,11 @@ $x(t) = \exp(-t) + t$
 
 """
 
-# ╔═╡ 5bfff4fa-b87e-4c65-a1e6-25bfb051d782
-
-
 # ╔═╡ a1de524e-dafc-42c9-af2e-7c8ae32eb202
 begin
-	"""
-	Simple Euler integration
-	h=0.1 is a good default.
-	"""
 	function euler1(h)
-	    tmax = 5;                               # max t value
-	    init = 1;                               # initial condition
+	    tmax = 5.0;                               # max t value
+	    init = 1.0;                               # initial condition
 	    
 	    t = 0:h:tmax;                           # vector of time values
 	    nsteps = length(t);                     # how many steps
@@ -743,7 +736,7 @@ begin
 	end
 	
 	
-	function plot_euler1(;h=0.1)
+	function plot_euler1(h)
 	    res = euler1(h);
 	    t = res[:,1]
 	    x = res[:,2]
@@ -751,20 +744,22 @@ begin
 	    
 	    plot(t, hcat(x, xtrue), legend=:topleft,
 			ylim=(0,5),
-			xlim=(0,5),
+		xlim=(0,5),
+                marker=:o,
 	         title = "Euler integration",
 	         xlabel="Time (s)", ylabel="x",
 	         label=["estimate" "true"])
 	end
-	
 end
 
 # ╔═╡ 96036942-347d-45c5-8ee0-d922c233cbaf
-h_slider = @bind h_step html"<input type='range' min='0.01' max='1' step='0.01' value='0.15'>"
+begin
+    @bind h_step  Slider(0.01:0.01:1; default=0.1, show_value=true)
+end
 
-# ╔═╡ 37a0943d-3be5-483d-8e00-2a4c5cdc87cd
-plot_euler1(h=h_step)
 
+# ╔═╡ c39e32c0-bd8c-4517-b547-f2a430e97fd0
+plot_euler1(h_step)
 
 # ╔═╡ dca12439-7e50-4fd0-b6a9-cd009e733c00
 md"""
@@ -946,7 +941,7 @@ function izh(;a=0.02,b=0.2, c=-65.0, d=6.0)
 end
 
 # ╔═╡ 0d416ac3-a853-4cba-8121-4a67d6f9dd54
-izh(a=0.02, b=0.2, c=-60,  d=8)
+izh(a=0.02, b=0.2, c=-65,  d=8)
 
 # ╔═╡ 9fa75ffb-e011-43b2-888b-4e5c2b78fe11
 md"""
@@ -2955,29 +2950,28 @@ version = "1.4.1+1"
 # ╔═╡ Cell order:
 # ╠═6c5b1231-bcce-48e4-84c9-da5168383aa2
 # ╟─bd5cece5-8fae-4b1a-8804-f1fa6898e19d
-# ╠═5bfff4fa-b87e-4c65-a1e6-25bfb051d782
-# ╠═37a0943d-3be5-483d-8e00-2a4c5cdc87cd
-# ╟─a1de524e-dafc-42c9-af2e-7c8ae32eb202
+# ╠═a1de524e-dafc-42c9-af2e-7c8ae32eb202
 # ╠═96036942-347d-45c5-8ee0-d922c233cbaf
+# ╠═c39e32c0-bd8c-4517-b547-f2a430e97fd0
 # ╟─dca12439-7e50-4fd0-b6a9-cd009e733c00
 # ╠═e45bf852-2774-40ba-b366-d3b0b069a171
 # ╠═3099670a-9090-4a65-9bd5-d9a6572b0b89
 # ╠═abcc39cd-87a1-476f-ba7a-024b7666627c
 # ╠═536c50c3-e0b8-4c6d-bc43-4b945f7dfdeb
-# ╠═260fa42f-ac15-470f-879c-4b2d14dd1e16
-# ╠═300a282e-ae61-451b-a65b-ad1fa6470a8e
-# ╠═711a59fd-59d6-4263-8825-7718cdb050be
+# ╟─260fa42f-ac15-470f-879c-4b2d14dd1e16
+# ╟─300a282e-ae61-451b-a65b-ad1fa6470a8e
+# ╟─711a59fd-59d6-4263-8825-7718cdb050be
 # ╠═0d416ac3-a853-4cba-8121-4a67d6f9dd54
 # ╠═9fa75ffb-e011-43b2-888b-4e5c2b78fe11
 # ╠═f19a034f-9637-4eea-9e52-2ce2b0b7facf
 # ╟─8e96c933-d951-4982-b7c4-cb0f56bd7688
 # ╠═f35617ec-d3cd-4292-a206-c27e8b4d6585
-# ╠═ae0cd726-4bea-4db8-902c-6dbd82b99427
+# ╟─ae0cd726-4bea-4db8-902c-6dbd82b99427
 # ╠═55ee9223-da6b-4c9e-a099-b3fd55fa6569
 # ╠═2bda2278-9f84-4d9f-b5f7-3172ba7ddfc1
 # ╠═d189ede5-4f3c-4c06-a35e-48a594da57bc
 # ╠═b5c63a31-ba7f-4242-adf6-169200822e03
-# ╠═3d659b22-a45e-4037-b22e-bc19a7fb7aa8
+# ╟─3d659b22-a45e-4037-b22e-bc19a7fb7aa8
 # ╠═afb88af7-026d-46d9-8f64-1de27215899d
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
