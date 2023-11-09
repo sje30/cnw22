@@ -797,8 +797,7 @@ plot_hh(i=0.1)
 
 ## Exercises
 
-1. Can you find the critical value of I where you first get a spike
-generated?
+1. Can you find the critical value of I where you first generate a spike?
 
 2. Can you work out the units on I (check equation 1 and Table 1 of
    hh_maths.pdf )?
@@ -806,8 +805,6 @@ generated?
 3. Estimate the firing rate (in Hz) for the model as you vary I from 0
    to 500.  Can you plot a graph of it?  
    
-   <!-- e.g. see    [hh_plotrate.m](hh_plotrate.m) for a template. -->
-
 4. (Advanced) Apply a pulse of negative current with I=-50
    for 5 ms followed by I=0 and describe what happens.
 
@@ -1019,7 +1016,7 @@ end
 
 # ╔═╡ 55ee9223-da6b-4c9e-a099-b3fd55fa6569
 begin
-	time, res = WTA2(10.0, 20.0)
+	time, res = WTA2(60.0, 70.0)
 	plot(time, res', label=["E1" "E2"],	xlabel = "Time", ylabel="Firing rate (Hz)")	
 end
 
